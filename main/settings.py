@@ -17,10 +17,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 if os.path.exists('env.py'):
     import env
-"""
+
 from dotenv import load_dotenv
 load_dotenv()
-"""
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 DEBUG = 'DEVELOPMENT' in os.environ
 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [os.environ.get("HOST"), 'localhost']
 
 
 # Application definition
@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'home',
-    'budget',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -119,7 +118,7 @@ WSGI_APPLICATION = "main.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-"""
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -127,17 +126,17 @@ DATABASES = {
     }
 }
 """
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'db.fckfkkmbqviwtndzupys.supabase.co',
+        'HOST': 'db.efmgvllalmzjhriledgo.supabase.co',
         'NAME': 'postgres',
         'USER': 'postgres',
         'PORT': '5432',
-        'PASSWORD': 'zwhLYqECWiHcqcYd',
+        'PASSWORD': 'hedgefundhackers',
     }
 }
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -156,8 +155,6 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
-
-ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 
 # Internationalization
